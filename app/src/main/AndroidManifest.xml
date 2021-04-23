@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InfoClassfy">
-        <activity android:name=".activity.HistoryInfoActivity"></activity>
+        <activity android:name=".activity.FileInitActivity"></activity>
+        <activity android:name=".activity.HistoryInfoActivity" />
         <activity android:name=".activity.InputTextActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
