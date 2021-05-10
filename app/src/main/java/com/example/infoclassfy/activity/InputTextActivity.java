@@ -1,6 +1,7 @@
 package com.example.infoclassfy.activity;
 
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;

@@ -1,6 +1,7 @@
 package com.example.infoclassfy;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -8,17 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.infoclassfy.activity.FileInitActivity;
 import com.example.infoclassfy.activity.HistoryInfoActivity;
 import com.example.infoclassfy.activity.InputTextActivity;
 
 import org.jetbrains.annotations.NotNull;
 
-import static com.example.infoclassfy.data.getFileName.getFilename;
+import static com.example.infoclassfy.methods.getFileName.getFilePath;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private Button btn_fileInit;
     private Button btn_historyInfo;
     private Button btn_inputText;
@@ -47,19 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @org.jetbrains.annotations.Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        assert data != null;
-        if(!getFilename(data.toString()).equals("file error")){
+//        assert data != null;
+        if(!getFilePath(data.toString()).equals("file error")){
             Intent intent = new Intent(MainActivity.this,FileInitActivity.class);
             startActivity(intent);
         }
-        Toast.makeText(getApplicationContext(),"文件的路径是："+getFilename(data.toString()),Toast.LENGTH_LONG).show();
-        filePath=getFilename((data.toString()));
-        Log.d("sss", String.valueOf(data));
-
-        Log.d("2222", getFilename(data.toString()));
+//        Toast.makeText(getApplicationContext(),"文件上传仅支持.txt .xlsx .xls文件：",Toast.LENGTH_LONG).show();
+//        filePath=getFilePath((data.toString()));
+//        Log.d("sss", String.valueOf(data));
+//
+//        Log.d("2222", getFilePath(data.toString()));
+        assert data != null;
+        Uri uri=data.getData();
+        filePath=uri.getPath().toString();
+        Log.d("lll", "onActivityResult: "+filePath);
 
     }
 
@@ -90,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
         btn_inputText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Clicked  btn_inputText");
-                Intent intent = new Intent(MainActivity.this, InputTextActivity.class);
+                Intent intent = new Intent(MainActivity.this, InputTextActivity.class );
                 startActivity(intent);
             }
         });
