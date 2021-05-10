@@ -1,10 +1,8 @@
 package com.example.infoclassfy;
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.infoclassfy.activity.FileInitActivity;
 import com.example.infoclassfy.activity.HistoryInfoActivity;
+import com.example.infoclassfy.activity.InputTextActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +18,7 @@ import static com.example.infoclassfy.data.getFileName.getFilename;
 
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private Button btn_fileInit;
     private Button btn_historyInfo;
     private Button btn_inputText;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         assert data != null;
@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
         btn_inputText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FileInitActivity.class);
+                Log.d(TAG, "Clicked  btn_inputText");
+                Intent intent = new Intent(MainActivity.this, InputTextActivity.class);
                 startActivity(intent);
             }
         });
