@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("2222", getFilePath(data.toString()));
         assert data != null;
         Uri uri=data.getData();
-        filePath=uri.getPath().toString();
+        filePath=uri.getPath();
         Log.d("lll", "onActivityResult: "+filePath);
 
     }

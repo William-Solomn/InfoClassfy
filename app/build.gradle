@@ -1,11 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-
+    id 'kotlin-android-extensions'
 }
 
 android {
-    apply plugin: 'kotlin-android-extensions'
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -43,6 +42,10 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'org.webjars:echarts:4.7.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.github.abel533:ECharts:3.0.0.2'
     testImplementation 'junit:junit:4.+'
     //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -57,11 +60,23 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     // To use constraintlayout in compose
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha05"
+
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     compile 'com.github.pinguo-zhouwei:EasyBlur:v1.0.0'
+    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+
+    //Internet post use Volley,and the author of this frameWork is Google
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.4'
+
+    implementation 'org.apache.commons:commons-csv:1.5'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }
