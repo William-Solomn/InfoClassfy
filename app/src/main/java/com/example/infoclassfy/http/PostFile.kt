@@ -7,7 +7,7 @@ class PostFile {
     fun postFile(file:File) {
 //        Thread {
 //            try {
-//                val url = "http://" +  + "/upload"
+//                val url = "http://" +   "/upload"
 //                val file = File("/sdcard/image.png")
 //                val fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file)
 //                val requestBody = MultipartBody.Builder()
@@ -30,5 +30,6 @@ class PostFile {
 //
 //            }
 //        }.start()
+//    }
     }
 }

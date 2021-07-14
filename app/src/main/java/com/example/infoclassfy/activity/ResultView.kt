@@ -6,8 +6,9 @@ import android.view.animation.TranslateAnimation
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.infoclassfy.R
-import com.example.infoclassfy.activity.InputTextActivity.inputTextData
-import com.example.infoclassfy.activity.InputTextActivity.result
+import com.example.infoclassfy.activity.InputTextActivity.*
+import com.example.infoclassfy.http.ParsingTextData
+import com.example.infoclassfy.http.ParsingTextData.Companion.getProbability
 import com.example.infoclassfy.http.ParsingTextData.Companion.getTexts
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
@@ -17,7 +18,6 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.android.synthetic.main.activity_result_view.*
 import java.util.*
-import kotlin.random.Random
 
 class ResultView : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -28,6 +28,7 @@ class ResultView : AppCompatActivity() {
         textTitle.setText(inputTextData.TextTitle)
         textContent.setText(inputTextData.TextContent)
         textAnimationStart()
+
 
         //TODO:
 
@@ -41,17 +42,21 @@ class ResultView : AppCompatActivity() {
     /*
     * 此方法用于设置柱状图的数据
     * */
+    @RequiresApi(Build.VERSION_CODES.O)
     fun setBartdata():BarData{
 
 
         val entries: ArrayList<BarEntry> = ArrayList<BarEntry>()//TODO:这改过
         //这用for训话为容器填充数据
-
-        for (i in 1..9){
-            var barEntry = BarEntry(i.toFloat(),Random.nextFloat())//这不是浮点数
+        var mylist=DoubleArray(9)
+        mylist= getProbability(getTexts(jsonResult))
+        textResult.text= result
+        for (i in 0..8){
+//            var barEntry = BarEntry(i.toFloat(),Random.nextFloat())//这不是浮点数
+            var barEntry = BarEntry(i.toFloat()+1, mylist[i].toFloat())//这不是浮点数
             entries.add(barEntry)
         }
-        val barDataSet = BarDataSet(entries,"财经  房产  教育  科技  军事  汽车  体育  游戏  娱乐")//这里设置数据集
+        val barDataSet = BarDataSet(entries, "财经  房产  教育  科技  军事  汽车  体育  游戏  娱乐")//这里设置数据集
 //        val barDataSet = BarDataSet(entries,"1:财经 2:房产 3:教育 4:科技 5:军事 6:汽车 7:体育 8:游戏 9:娱乐")//这里设置数据集
         val barData = BarData(barDataSet)
         return barData//返回可用于柱状图的数据
@@ -74,7 +79,8 @@ class ResultView : AppCompatActivity() {
         textContent.animation = translateAnimationForContent
         textResult.animation = translateAnimationForResult
 
-        textResult.text= getTexts(result).substring(getTexts(result).length - 3)
+
+//        textResult.text= getTexts(jsonResult).substring(getTexts(jsonResult).length - 3)//TODO:截取字符串，获取到最终结果/7
 //        val barChart: BarChart? =null
 //        ChartTest = initBarChart(barChart)
 

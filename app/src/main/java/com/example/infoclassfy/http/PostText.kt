@@ -1,6 +1,7 @@
 package com.example.infoclassfy.http
 
 import android.util.Log
+import com.example.infoclassfy.activity.InputTextActivity.jsonResult
 import com.example.infoclassfy.activity.InputTextActivity.result
 import com.example.infoclassfy.data.InputTextData
 import okhttp3.*
@@ -15,6 +16,7 @@ class PostText {
     companion object{
         fun postMessage(inputTextData: InputTextData){
             var string :String = ""
+            if(jsonResult!=null) jsonResult=null
             val url = "http://39.105.116.248/news"
             Thread{
 
@@ -37,15 +39,16 @@ class PostText {
 
 
                     override fun onFailure(call: Call, e: IOException) {
-                        TODO("Not yet implemented")
+                        Log.d("33333", "onFailure: "+e)
                     }
 
                     override fun onResponse(call: Call, response: Response) {
 
-                        string= response.body!!.string()
-                        result=string
+                        string = response.body!!.string()
 
-                        Log.d("33333", "onResponse: "+string)
+                        jsonResult = string
+
+                        Log.d("33333", "onResponse: " + string)
                     }
                 })
 
