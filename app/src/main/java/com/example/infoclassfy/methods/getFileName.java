@@ -25,6 +25,10 @@ public class getFileName {
             com.example.infoclassfy.data.fileType fileTypee=new fileType(2);
             filetype="2";
             return filename.substring(filename.lastIndexOf("//")+2,filename.indexOf(".xls")+4);
+        }else if(filename.contains(".csv")){
+            com.example.infoclassfy.data.fileType fileTypee = new fileType(3);
+            filetype="3";
+            return filename.substring(filename.lastIndexOf("//")+2, filename.indexOf(".csv")+4);
         }
 
 //        File fname=new File(filename.trim());
