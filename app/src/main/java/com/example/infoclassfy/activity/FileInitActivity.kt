@@ -18,6 +18,9 @@ import org.apache.http.util.EncodingUtils
 import java.io.*
 import java.util.*
 
+
+class FileInitActivity  {
+
 class FileInitActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -143,6 +146,7 @@ class FileInitActivity : AppCompatActivity() {
 
         return res
     }
+
 
 //    private val mList: List<ApacheBean> = ArrayList<Any>()
 //    var path = this.filesDir.absolutePath.toString() + File.separator + "test_file" + ".csv"

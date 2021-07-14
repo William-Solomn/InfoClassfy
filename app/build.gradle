@@ -16,6 +16,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //使用renderscript 兼容包
+        renderscriptTargetApi 25
+        renderscriptSupportModeEnabled true
+
     }
 
     buildTypes {
@@ -56,6 +61,12 @@ dependencies {
     // To use constraintlayout in compose
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha05"
 
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    compile 'com.github.pinguo-zhouwei:EasyBlur:v1.0.0'
     implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
@@ -67,4 +78,5 @@ dependencies {
 
     implementation 'org.apache.commons:commons-csv:1.5'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }
